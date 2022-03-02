@@ -1,0 +1,2 @@
+C:\Dev\Developers\Test\Debug\Test.vcxproj.CopyComplete
+C:\Developers\Test\Debug\Test.vcxproj.CopyComplete
