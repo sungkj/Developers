@@ -7,11 +7,12 @@
 using namespace std;
 
 class DataBase {
-    void ADD();
-    void DEL();
-    void SCH();
-    void MOD();
+public:
+    void add(Employee* employee);
+    void del(vector<Employee*> target);
+    vector<Employee*> sch(string row, string val);
+    void mod(vector<Employee*> target, string row, string val);
 
 private:
-    vector<Employee*>empolyees;
+    vector<Employee*> employees_;  // vector 말고 sorting 되는걸로?
 };
