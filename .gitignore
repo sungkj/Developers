@@ -1,8 +1,5 @@
 .vs/
 Debug/
 packages/
-Developers.sln
 Developers/Debug/
-Developers/Developers.vcxproj*
 Test/Debug/
-Test/Debug/Test.vcxproj*
