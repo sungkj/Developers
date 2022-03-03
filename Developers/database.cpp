@@ -1,14 +1,19 @@
 #include "database.h"
 
-void DataBase::ADD() {
+void DataBase::add(Employee* employee) {
 
-    }
-void DataBase::DEL() {
+}
 
-    }
-void DataBase::SCH() {
+void DataBase::del(vector<Employee*> target) {
 
-    }
-void DataBase::MOD() {
+}
 
-    }
+vector<Employee*> DataBase::sch(string row, string val) {
+	vector<Employee*> list;
+
+	return list;
+}
+
+void DataBase::mod(vector<Employee*> target, string row, string val) {
+
+}

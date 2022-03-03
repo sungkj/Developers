@@ -6,7 +6,11 @@ using namespace std;
 
 class Employee {
 public:
+    Employee(/*id, name, ...*/);
     string getName();
+    string getFirstName();
+    string getLastName();
+
 
 private:
     string id;

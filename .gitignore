@@ -2,4 +2,6 @@
 Debug/
 packages/
 Developers/Debug/
+Developers/Developers.vcxproj.user
 Test/Debug/
+Test/Test.vcxproj.user
