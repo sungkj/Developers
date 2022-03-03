@@ -1,22 +1,41 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 class Employee {
 public:
-    Employee(/*id, name, ...*/);
-    string getName();
-    string getFirstName();
-    string getLastName();
-
+	Employee(string employeeNum, string name, string cl, string phoneNum, string birthday, string certi);
+	string getEmployeeNum();
+	string getName();
+	string getCl();
+	string getPhoneNum();
+	string getBirthday();
+	string getCerti();
+	string getFirstName();
+	string getLastName();
+	string getMiddlePhoneNum();
+	string getLastPhoneNum();
+	string getBirthdayYear();
+	string getBirthdayMonth();
+	string getBirthdayDate();
+    void setName(string name);
+    void setCl(string cl);
+    void setPhoneNum(string phoneNum);
+    void setBirthday(string birthday);
+    void setCerti(string certi);
 
 private:
-    string id;
-    string name;
-    string cl;
-    string number;
-    string birth;
-    string certi;
+    string employeeNum_;
+    string firstName_;
+    string lastName_;
+    string cl_;
+    string middlePhoneNum_;
+    string lastPhoneNum_;
+    string birthdayYear_;
+    string birthdayMonth_;
+    string birthdayDate_;
+    string certi_;
 };
