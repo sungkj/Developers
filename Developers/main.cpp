@@ -7,7 +7,7 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 	if (argc != 3) {
-		cout << "ÀÎÀÚ°¡ 2°³ ÇÊ¿äÇÕ´Ï´Ù." << endl;
+		cout << "ï¿½ï¿½ï¿½Ú°ï¿½ 2ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Õ´Ï´ï¿½." << endl;
 		cout << "usage : " << argv[0] << " input.txt output.txt" << endl;
 		return -1;
 	}
