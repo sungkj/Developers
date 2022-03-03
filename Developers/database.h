@@ -10,7 +10,7 @@ class DataBase {
 public:
     void add(Employee* employee);
     void del(vector<Employee*> target);
-    vector<Employee*> sch(string row, string val);
+    vector<Employee*> sch(string row, char option, string val);
     void mod(vector<Employee*> target, string row, string val);
 
 private:
