@@ -17,12 +17,11 @@ void writeOutputFile(string path, vector<string> outputs) {
 int main(int argc, char* argv[]) {
 	vector<string> commands;
 	vector<string> outputs;
-
+	DataBase db;
 	commands = loadInputFile(argv[1]);
 	for (auto command : commands) {
-		Command* cmd = new Command(command);
-		cmd->execute();
-		outputs.push_back(cmd->getOutputText());
+		Command* cmd = new Command(&db);
+		outputs.push_back(cmd->execute(command));
 	}
 	writeOutputFile(argv[2], outputs);
 
