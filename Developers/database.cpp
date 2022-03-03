@@ -1,11 +1,19 @@
 #include "database.h"
+#include <string>
 
 void DataBase::add(Employee* employee) {
 	employees_.push_back(employee);
 }
 
 void DataBase::del(vector<Employee*> target) {
-
+	for (int i = 0; i < target.size(); i++) {
+		for (int j = 0; j < employees_.size(); j++) {
+			if (target[i]->getEmployeeNum().compare(employees_[j]->getEmployeeNum()) == 0) {
+				employees_.erase(employees_.begin() + j);
+				break;
+			}
+		}
+	}
 }
 
 vector<Employee*> DataBase::sch(char option, string col, string val) {
