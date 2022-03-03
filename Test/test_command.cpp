@@ -16,7 +16,7 @@ TEST(CommandTest, Positive) {
 	"DEL,1",
 	"MOD,17112609,FB NTAWR,CL4,010-5645-6122,20050520,PRO",
 	"SCH,1",
-	"NULL"
+	"NONE"
 	};
 
 	EXPECT_EQ(cmd->execute("MOD,-p, , ,name,FB NTAWR,birthday,20050520"), expected_results[0]);

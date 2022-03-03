@@ -47,7 +47,7 @@ protected:
 			}
 		}
 		else{
-			str += _getCmdCode(commandStr) + to_string(employeeList.size());
+			str += _getCmdCode(commandStr) + "," + to_string(employeeList.size());
 		}
 		
 		return str;
@@ -81,7 +81,7 @@ public:
 	virtual string run(){
 		Employee* employee = _getEmployee(commandStr_);
 		db_->add(employee);
-		delete employee;
+		// delete employee;
 		return "";
 	}
 
@@ -100,9 +100,10 @@ public:
 	}
 
 	virtual string run(){
-		vector<Employee*> employeeList = db_->sch(_getCol(commandStr_), _getOption(commandStr_), _getVal(commandStr_));
+		vector<Employee*> employeeList = db_->sch(_getOption(commandStr_), _getCol(commandStr_), _getVal(commandStr_));
+		string result = _employeeListToString(commandStr_, employeeList);
 		db_->del(employeeList);
-		return _employeeListToString(commandStr_, employeeList);
+		return result;
 		/*to do : employList 메모리 해제??*/
 	}
 
@@ -120,7 +121,7 @@ public:
 	}
 
 	virtual string run(){
-		vector<Employee*> employeeList = db_->sch(_getCol(commandStr_), _getOption(commandStr_), _getVal(commandStr_));
+		vector<Employee*> employeeList = db_->sch(_getOption(commandStr_), _getCol(commandStr_), _getVal(commandStr_));
 		return _employeeListToString(commandStr_, employeeList);
 		/*to do : employList 메모리 해제??*/
 	}
@@ -141,9 +142,10 @@ public:
 	virtual string run(){
 		string col = _getCol(commandStr_);
 		string val = _getVal(commandStr_);
-		vector<Employee*> employeeList = db_->sch(col, _getOption(commandStr_), val);
+		vector<Employee*> employeeList = db_->sch(_getOption(commandStr_), col, val);
+		string result = _employeeListToString(commandStr_, employeeList);
 		db_->mod(employeeList, col, val);
-		return _employeeListToString(commandStr_, employeeList);
+		return result;
 		/*to do : employList 메모리 해제??*/
 	}
 
