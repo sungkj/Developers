@@ -1,5 +1,4 @@
 #include "employee_manager.h"
-#include "command.h"
 
 void EmployeeManager::readInput(Input* input) {
 	commandStrs_ = input->load();
@@ -9,11 +8,12 @@ void EmployeeManager::readInput(Input* input) {
 	}
 }
 
-void EmployeeManager::excute() {
+void EmployeeManager::execute() {
+	DataBase db;
+		
 	for (auto commandStr : commandStrs_) {
-		Command* command = new Command(commandStr);
-		command->execute();
-		outputStrs_.push_back(command->getOutputText());
+		Command* command = new Command(&db);
+		outputStrs_.push_back(command->execute(commandStr));
 	}
 }
 

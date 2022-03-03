@@ -7,7 +7,6 @@ using namespace std;
 
 int main(int argc, char* argv[]) {
 	if (argc != 3) {
-		cout << "���ڰ� 2�� �ʿ��մϴ�." << endl;
 		cout << "usage : " << argv[0] << " input.txt output.txt" << endl;
 		return -1;
 	}
@@ -17,7 +16,7 @@ int main(int argc, char* argv[]) {
 	Output output(argv[2]);
 
 	manager.readInput(&input);
-	manager.excute();
+	manager.execute();
 	manager.writeOutput(&output);
 
 	return 0;
