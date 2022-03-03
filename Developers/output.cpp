@@ -4,8 +4,14 @@ Output::Output(string path) {
 	ofs_.open(path);
 }
 
-void Output::save(vector<string> strs) {
+bool Output::save(vector<string> strs) {
+	if (ofs_.fail()) {
+		return false;
+	}
+
 	for (auto str : strs) {
 		ofs_ << str << endl;
 	}
+
+	return true;
 }

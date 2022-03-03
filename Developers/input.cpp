@@ -5,12 +5,15 @@ Input::Input(string path) {
 }
 
 vector<string> Input::load() {
-	string str;
-	
 	commands_.clear();
 
-	while (getline(ifs_, str)) {
-		commands_.push_back(str);
+	if (!ifs_.fail()) {
+		string str;
+
+
+		while (getline(ifs_, str)) {
+			commands_.push_back(str);
+		}
 	}
 
 	return commands_;

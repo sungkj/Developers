@@ -9,7 +9,7 @@ using namespace std;
 class Output {
 public:
 	Output(string path);
-	void save(vector<string> strs);
+	bool save(vector<string> strs);
 
 private:
 	ofstream ofs_;

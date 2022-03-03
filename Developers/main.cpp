@@ -1,30 +1,35 @@
 #include <iostream>
+#include "input.h"
+#include "output.h"
 #include "command.h"
 
 using namespace std;
 
-vector<string> loadInputFile(string path) {
-	// TODO : 파일에서 라인당 string 하나씩 추출하여 commands_에 push_back 하는 코드 추가
-	vector<string> commands;
-
-	return commands;
-}
-
-void writeOutputFile(string path, vector<string> outputs) {
-	// TODO : outputs_를 파일로 쓰는 코드 추가
-}
-
 int main(int argc, char* argv[]) {
-	vector<string> commands;
-	vector<string> outputs;
+	if (argc != 3) {
+		cout << "인자가 2개 필요합니다." << endl;
+		cout << "usage : " << argv[0] << " input.txt output.txt" << endl;
+		return -1;
+	}
 
-	commands = loadInputFile(argv[1]);
+	vector<string> outputs;
+	Input input(argv[1]);
+	Output output(argv[2]);
+
+	vector<string> commands = input.load();
+	if (commands.empty()) {
+		cout << "ERROR : Input 파일 읽기 실패" << endl;
+	}
+
 	for (auto command : commands) {
 		Command* cmd = new Command(command);
 		cmd->execute();
 		outputs.push_back(cmd->getOutputText());
 	}
-	writeOutputFile(argv[2], outputs);
+
+	if (!output.save(outputs)) {
+		cout << "ERROR : Output 파일 쓰기 실패" << endl;
+	}
 
 	return 0;
 }
