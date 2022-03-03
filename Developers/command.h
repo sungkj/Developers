@@ -39,7 +39,9 @@ protected:
 
 		string str = "";
 		if (_isPrintOption(commandStr)){
-			for (int i = 0; i < employeeList.size(); i++){
+			int recordSize = employeeList.size();
+			if (recordSize > 5) recordSize = 5;
+			for (int i = 0; i < recordSize; i++){
 				if (i != 0)
 					str += "\n";
 				Employee* emp = employeeList[i];
