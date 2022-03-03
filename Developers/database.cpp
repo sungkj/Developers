@@ -16,4 +16,7 @@ vector<Employee*> DataBase::sch(string row, string val) {
 
 void DataBase::mod(vector<Employee*> target, string row, string val) {
 
+vector<Employee*> DataBase::getDBList() {
+	return employees_;
 }
+
