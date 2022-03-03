@@ -1,33 +1,15 @@
 #include "database.h"
 #include <string>
 
-void modifyInfo(Employee* employee, string column, string val) {
-	if (column.compare("name") == 0) {
-		employee->setName(val);
-	}
-	else if (column.compare("birthday") == 0) {
-		employee->setBirthday(val);
-	}
-	else if (column.compare("cl") == 0) {
-		employee->setCl(val);
-	}
-	else if (column.compare("certi") == 0) {
-		employee->setCerti(val);
-	}
-	else {
-		cout << "ERROR : invalid column" << endl;
-	}
-}
-
 void DataBase::add(Employee* employee) {
 	employees_.push_back(employee);
 }
 
-void DataBase::del(vector<Employee*> target) {
-	for (int i = 0; i < target.size(); i++) {
-		for (int j = 0; j < employees_.size(); j++) {
-			if (target[i]->getEmployeeNum().compare(employees_[j]->getEmployeeNum()) == 0) {
-				employees_.erase(employees_.begin() + j);
+void DataBase::del(vector<Employee*> targets) {
+	for (auto target : targets) {
+		for (int i = 0; i < employees_.size(); i++) {
+			if (target->getEmployeeNum().compare(employees_[i]->getEmployeeNum()) == 0) {
+				employees_.erase(employees_.begin() + i);
 				break;
 			}
 		}
@@ -89,11 +71,25 @@ vector<Employee*> DataBase::sch(char option, string col, string val) {
 
 }
 
-void DataBase::mod(vector<Employee*> target, string row, string val) {
-	for (int i = 0; i < target.size(); i++) {
-		for (int j = 0; j < employees_.size(); j++) {
-			if (target[i]->getEmployeeNum().compare(employees_[j]->getEmployeeNum()) == 0) {
-				modifyInfo(employees_[j], row, val);
+void DataBase::mod(vector<Employee*> targets, string column, string val) {
+	for (auto target : targets) {
+		for (auto employee : employees_) {
+			if (target->getEmployeeNum().compare(employee->getEmployeeNum()) == 0) {
+				if (column.compare("name") == 0) {
+					employee->setName(val);
+				}
+				else if (column.compare("birthday") == 0) {
+					employee->setBirthday(val);
+				}
+				else if (column.compare("cl") == 0) {
+					employee->setCl(val);
+				}
+				else if (column.compare("certi") == 0) {
+					employee->setCerti(val);
+				}
+				else {
+					cout << "ERROR : invalid column" << endl;
+				}
 				break;
 			}
 		}
