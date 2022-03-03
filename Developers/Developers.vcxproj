@@ -22,6 +22,7 @@
     <ClCompile Include="command.cpp" />
     <ClCompile Include="database.cpp" />
     <ClCompile Include="employee.cpp" />
+    <ClCompile Include="employee_manager.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="output.cpp" />
@@ -30,6 +31,7 @@
     <ClInclude Include="command.h" />
     <ClInclude Include="database.h" />
     <ClInclude Include="employee.h" />
+    <ClInclude Include="employee_manager.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="output.h" />
   </ItemGroup>
