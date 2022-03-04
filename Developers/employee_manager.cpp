@@ -20,8 +20,8 @@ void EmployeeManager::execute() {
 	}
 }
 
-void EmployeeManager::writeOutput(Output* output) {
-	if (!output->save(outputStrs_)) {
+void EmployeeManager::writeOutput(shared_ptr<Output> outputPtr) {
+	if (!outputPtr->save(outputStrs_)) {
 		cout << "ERROR : Failed to write output file" << endl;
 	}
 }
