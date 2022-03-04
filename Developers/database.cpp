@@ -25,62 +25,63 @@ bool comparePtrToNode(Employee* a, Employee* b) {
 
 string DataBase::getEmployeeInfo(Employee* employee, char option, string col)
 {
-	string result;
-
 	if (col == "employeeNum") {
-		result = employee->getEmployeeNum();
+		return employee->getEmployeeNum();
 	}
 	else if (col == "name") {
 		if (option == ' ') {
-			result = employee->getName();
+			return employee->getName();
 		}
 		else if (option == 'f') {
-			result = employee->getFirstName();
+			return employee->getFirstName();
 		}
 		else if (option == 'l') {
-			result = employee->getLastName();
+			return employee->getLastName();
 		}
 	}
 	else if (col == "cl") {
-		result = employee->getCl();
+		return employee->getCl();
 	}
 	else if (col == "phoneNum") {
 		if (option == ' ') {
-			result = employee->getPhoneNum();
+			return employee->getPhoneNum();
 		}
 		else if (option == 'm') {
-			result = employee->getMiddlePhoneNum();
+			return employee->getMiddlePhoneNum();
 		}
 		else if (option == 'l') {
-			result = employee->getLastPhoneNum();
+			return employee->getLastPhoneNum();
 		}
 	}
 	else if (col == "birthday") {
 		if (option == ' ') {
-			result = employee->getBirthday();
+			return employee->getBirthday();
 		}
 		else if (option == 'y') {
-			result = employee->getBirthdayYear();
+			return employee->getBirthdayYear();
 		}
 		else if (option == 'm') {
-			result = employee->getBirthdayMonth();
+			return employee->getBirthdayMonth();
 		}
 		else if (option == 'd') {
-			result = employee->getBirthdayDate();
+			return employee->getBirthdayDate();
 		}
 	}
 	else if (col == "certi") {
-		result = employee->getCerti();
+		return employee->getCerti();
 	}
 
-	return result;
+	return "error_code";
 }
 
 vector<Employee*> DataBase::sch(char option, string col, string val) {
 	vector<Employee*> list;
+	string employeeInfo;
 
 	for (auto employees : employees_) {
-		if (val == getEmployeeInfo(employees, option, col)) list.push_back(employees);
+		employeeInfo = getEmployeeInfo(employees, option, col);
+		if (employeeInfo == "error_code") break;
+		if (employeeInfo == val) list.push_back(employees);
 	}
 
 	if (list.size() > 1) sort(list.begin(), list.end(), comparePtrToNode);
