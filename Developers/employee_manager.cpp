@@ -4,7 +4,7 @@ void EmployeeManager::readInput(Input* input) {
 	commandStrs_ = input->load();
 
 	if (commandStrs_.empty()) {
-		cout << "ERROR : Input ÆÄÀÏ ÀÐ±â ½ÇÆÐ" << endl;
+		cout << "ERROR : Input ï¿½ï¿½ï¿½ï¿½ ï¿½Ð±ï¿½ ï¿½ï¿½ï¿½ï¿½" << endl;
 	}
 }
 
@@ -15,13 +15,13 @@ void EmployeeManager::execute() {
 		Command* command = new Command(&db);
 		string outputStr = command->execute(commandStr);
 		if (!outputStr.empty()) {
-			outputStrs_.push_back(command->execute(commandStr));
+			outputStrs_.push_back(outputStr);
 		}
 	}
 }
 
 void EmployeeManager::writeOutput(Output* output) {
 	if (!output->save(outputStrs_)) {
-		cout << "ERROR : Output ÆÄÀÏ ¾²±â ½ÇÆÐ" << endl;
+		cout << "ERROR : Output ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½" << endl;
 	}
 }
