@@ -1,21 +1,18 @@
 #pragma once
 
 #include "pch.h"
-
-#include "../Developers/command.cpp"
-#include "../Developers/database.cpp"
-#include "../Developers/employee.cpp"
+#include "test_header.h"
 
 TEST(DatabaseTest, SchTest) {
 	DataBase* testList = new DataBase();
 	// DB 추가 필요
 	vector<Employee*> cmpList;
-	Employee* employee = new Employee("1000", "LEE JY", "CL3", "010-1234-5678", "19001122", "PRO");
+	Employee* employee = new Employee("15123099", "LEE JY", "CL3", "010-1234-5678", "19001122", "PRO");
 
 	cmpList.push_back(employee);
 	testList->add(employee);
 
-	EXPECT_EQ(testList->sch(' ', "employeeNum", "1000"), cmpList);
+	EXPECT_EQ(testList->sch(' ', "employeeNum", "15123099"), cmpList);
 
 	EXPECT_EQ(testList->sch(' ', "name", "LEE JY"), cmpList);
 	EXPECT_EQ(testList->sch('f', "name", "LEE"), cmpList);

@@ -1,7 +1,5 @@
 #include "pch.h"
-#include "../Developers/command.cpp"
-#include "../Developers/database.cpp"
-#include "../Developers/employee.cpp"
+#include "test_header.h"
 
 TEST(FunctionTest1, TestDel) {
 	DataBase* db = new DataBase();

@@ -1,6 +1,5 @@
 #include "pch.h"
-#include "../Developers/input.cpp"
-#include "../Developers/output.cpp"
+#include "test_header.h"
 
 TEST(InputTest, BasicTest) {
 	Input input("input_20_20.txt");
