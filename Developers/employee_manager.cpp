@@ -4,7 +4,7 @@ void EmployeeManager::readInput(Input* input) {
 	commandStrs_ = input->load();
 
 	if (commandStrs_.empty()) {
-		cout << "ERROR : Input ���� �б� ����" << endl;
+		cout << "ERROR : Failed to load input file" << endl;
 	}
 }
 
@@ -22,6 +22,6 @@ void EmployeeManager::execute() {
 
 void EmployeeManager::writeOutput(Output* output) {
 	if (!output->save(outputStrs_)) {
-		cout << "ERROR : Output ���� ���� ����" << endl;
+		cout << "ERROR : Failed to write output file" << endl;
 	}
 }
