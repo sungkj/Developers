@@ -23,58 +23,68 @@ bool comparePtrToNode(Employee* a, Employee* b) {
 	return (*a < *b); 
 }
 
-vector<Employee*> DataBase::sch(char option, string col, string val) {
-	vector<Employee*> list;
-
-	for (auto employees : employees_) {
-		if (col == "employeeNum") {
-			if (val == employees->getEmployeeNum()) list.push_back(employees);
+string DataBase::getEmployeeInfo(Employee* employee, char option, string col)
+{
+	if (col == "employeeNum") {
+		return employee->getEmployeeNum();
+	}
+	else if (col == "name") {
+		if (option == ' ') {
+			return employee->getName();
 		}
-		else if (col == "name") {
-			if (option == ' ') {
-				if (val == employees->getName()) list.push_back(employees);
-			}
-			else if (option == 'f') {
-				if (val == employees->getFirstName()) list.push_back(employees);
-			}
-			else if (option == 'l') {
-				if (val == employees->getLastName()) list.push_back(employees);
-			}
+		else if (option == 'f') {
+			return employee->getFirstName();
 		}
-		else if (col == "cl") {
-			if (val == employees->getCl()) list.push_back(employees);
-		}
-		else if (col == "phoneNum") {
-			if (option == ' ') {
-				if (val == employees->getPhoneNum()) list.push_back(employees);
-			}
-			else if (option == 'm') {
-				if (val == employees->getMiddlePhoneNum()) list.push_back(employees);
-			}
-			else if (option == 'l') {
-				if (val == employees->getLastPhoneNum()) list.push_back(employees);
-			}
-		}
-		else if (col == "birthday") {
-			if (option == ' ') {
-				if (val == employees->getBirthday()) list.push_back(employees);
-			}
-			else if (option == 'y') {
-				if (val == employees->getBirthdayYear()) list.push_back(employees);
-			}
-			else if (option == 'm') {
-				if (val == employees->getBirthdayMonth()) list.push_back(employees);
-			}
-			else if (option == 'd') {
-				if (val == employees->getBirthdayDate()) list.push_back(employees);
-			}
-		}
-		else if (col == "certi") {
-			if (val == employees->getCerti()) list.push_back(employees);
+		else if (option == 'l') {
+			return employee->getLastName();
 		}
 	}
+	else if (col == "cl") {
+		return employee->getCl();
+	}
+	else if (col == "phoneNum") {
+		if (option == ' ') {
+			return employee->getPhoneNum();
+		}
+		else if (option == 'm') {
+			return employee->getMiddlePhoneNum();
+		}
+		else if (option == 'l') {
+			return employee->getLastPhoneNum();
+		}
+	}
+	else if (col == "birthday") {
+		if (option == ' ') {
+			return employee->getBirthday();
+		}
+		else if (option == 'y') {
+			return employee->getBirthdayYear();
+		}
+		else if (option == 'm') {
+			return employee->getBirthdayMonth();
+		}
+		else if (option == 'd') {
+			return employee->getBirthdayDate();
+		}
+	}
+	else if (col == "certi") {
+		return employee->getCerti();
+	}
 
-	sort(list.begin(), list.end(), comparePtrToNode);
+	return "error_code";
+}
+
+vector<Employee*> DataBase::sch(char option, string col, string val) {
+	vector<Employee*> list;
+	string employeeInfo;
+
+	for (auto employees : employees_) {
+		employeeInfo = getEmployeeInfo(employees, option, col);
+		if (employeeInfo == "error_code") break;
+		if (employeeInfo == val) list.push_back(employees);
+	}
+
+	if (list.size() > 1) sort(list.begin(), list.end(), comparePtrToNode);
 	
 	return list;
 }

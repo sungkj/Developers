@@ -1,6 +1,5 @@
 #include "pch.h"
-#include "../Developers/input.cpp"
-#include "../Developers/output.cpp"
+#include "test_header.h"
 
 TEST(InputTest, BasicTest) {
 	shared_ptr<Input> input = FactoryInput::createFileInput("input_20_20.txt");
