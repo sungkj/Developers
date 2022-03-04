@@ -1,36 +1,15 @@
-
 #include "employee.h"
 
 Employee::Employee(string employeeNum, string name, string cl, string phoneNum, string birthday, string certi) :
-    cl_(cl), certi_(certi) {
-	int employeeNumYear = stoi(employeeNum.substr(0, 2));
-	if (employeeNumYear < 69) {
-		employeeNum_ = stoi(employeeNum) + 2000000000U;
-	}
-	else {
-		employeeNum_ = stoi(employeeNum) + 1900000000U;
-	}
-
-	size_t pos = name.find(' ');
-	firstName_ = name.substr(0, pos);
-	lastName_ = name.substr(pos + 1);
-
-	size_t pos1 = phoneNum.find('-');
-	size_t pos2 = phoneNum.find('-', pos1 + 1);
-	middlePhoneNum_ = phoneNum.substr(pos1 + 1, pos2 - pos1 - 1);
-	lastPhoneNum_ = phoneNum.substr(pos2 + 1);
-
-	birthdayYear_ = birthday.substr(0, 4);
-	birthdayMonth_ = birthday.substr(4, 2);
-	birthdayDate_ = birthday.substr(6);
+    employeeNum_(employeeNum), name_(name), cl_(cl), phoneNum_(phoneNum), birthday_(birthday), certi_(certi) {
 }
 
 string Employee::getEmployeeNum() {
-	return to_string(employeeNum_).substr(2);
+	return employeeNum_.get();
 }
 
 string Employee::getName() {
-	return firstName_ + " " + lastName_;
+	return name_.getName();
 }
 
 string Employee::getCl() {
@@ -38,11 +17,11 @@ string Employee::getCl() {
 }
 
 string Employee::getPhoneNum() {
-	return "010-" + middlePhoneNum_ + "-" + lastPhoneNum_;
+	return phoneNum_.getPhoneNum();
 }
 
 string Employee::getBirthday() {
-	return birthdayYear_ + birthdayMonth_ + birthdayDate_;
+	return birthday_.get();
 }
 
 string Employee::getCerti() {
@@ -50,37 +29,35 @@ string Employee::getCerti() {
 }
 
 string Employee::getFirstName() {
-	return firstName_;
+	return name_.getFirstName();
 }
 
 string Employee::getLastName() {	
-	return lastName_;
+	return name_.getLastName();
 }
 
 string Employee::getMiddlePhoneNum() {
-	return middlePhoneNum_;
+	return phoneNum_.getMiddlePhoneNum();
 }
 
 string Employee::getLastPhoneNum() {
-	return lastPhoneNum_;
+	return phoneNum_.getLastPhoneNum();
 }
 
 string Employee::getBirthdayYear() {
-	return birthdayYear_;
+	return birthday_.getYear();
 }
 
 string Employee::getBirthdayMonth() {
-	return birthdayMonth_;
+	return birthday_.getMonth();
 }
 
 string Employee::getBirthdayDate() {
-	return birthdayDate_;
+	return birthday_.getDate();
 }
 
 void Employee::setName(string name) {
-	size_t pos = name.find(' ');
-	firstName_ = name.substr(0, pos);
-	lastName_ = name.substr(pos + 1);
+	name_.setName(name);
 }
 
 void Employee::setCl(string cl) {
@@ -88,18 +65,11 @@ void Employee::setCl(string cl) {
 }
 
 void Employee::setPhoneNum(string phoneNum) {
-	size_t pos1 = phoneNum.find('-');
-	size_t pos2 = phoneNum.find('-', pos1 + 1);
-	middlePhoneNum_ = phoneNum.substr(pos1 + 1, pos2 - pos1 - 1);
-	lastPhoneNum_ = phoneNum.substr(pos2 + 1);
-
+	phoneNum_.setPhoneNum(phoneNum);
 }
 
 void Employee::setBirthday(string birthday) {
-	birthdayYear_ = birthday.substr(0, 4);
-	birthdayMonth_ = birthday.substr(4, 2);
-	birthdayDate_ = birthday.substr(6);
-
+	birthday_.set(birthday);
 }
 
 void Employee::setCerti(string certi) {
