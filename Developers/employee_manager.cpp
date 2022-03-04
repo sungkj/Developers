@@ -12,8 +12,8 @@ void EmployeeManager::execute() {
 	DataBase db;
 		
 	for (auto commandStr : commandStrs_) {
-		Command* command = new Command(&db);
-		string outputStr = command->execute(commandStr);
+		CmdManager* cmdManager = new CmdManager(&db);
+		string outputStr = cmdManager->execute(commandStr);
 		if (!outputStr.empty()) {
 			outputStrs_.push_back(outputStr);
 		}

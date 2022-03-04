@@ -36,6 +36,9 @@
     <ClCompile Include="employee_manager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="cmd_parser.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="command.h">
@@ -54,6 +57,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="employee_manager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cmd_parser.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
