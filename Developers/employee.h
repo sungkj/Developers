@@ -28,7 +28,7 @@ public:
     void setCerti(string certi);
 
 private:
-    string employeeNum_;
+    unsigned int employeeNum_;
     string firstName_;
     string lastName_;
     string cl_;

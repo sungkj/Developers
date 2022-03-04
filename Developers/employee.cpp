@@ -2,7 +2,16 @@
 #include "employee.h"
 
 Employee::Employee(string employeeNum, string name, string cl, string phoneNum, string birthday, string certi) :
-    employeeNum_(employeeNum), cl_(cl), certi_(certi) {
+    cl_(cl), certi_(certi) {
+	int employeeNumYear = stoi(employeeNum.substr(0, 2));
+	if (employeeNumYear < 69) {
+		employeeNum_ = stoi(employeeNum) + 2000000000U;
+	}
+	else {
+		employeeNum_ = stoi(employeeNum) + 1900000000U;
+	}
+	cout << employeeNum_ << endl;
+
 	size_t pos = name.find(' ');
 	firstName_ = name.substr(0, pos);
 	lastName_ = name.substr(pos + 1);
@@ -18,7 +27,7 @@ Employee::Employee(string employeeNum, string name, string cl, string phoneNum, 
 }
 
 string Employee::getEmployeeNum() {
-	return employeeNum_;
+	return to_string(employeeNum_).substr(2);
 }
 
 string Employee::getName() {
