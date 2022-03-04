@@ -1,5 +1,8 @@
 #include "database.h"
 #include <string>
+#include <algorithm>
+
+using namespace std;
 
 void DataBase::add(Employee* employee) {
 	employees_.push_back(employee);
@@ -14,6 +17,19 @@ void DataBase::del(vector<Employee*> targets) {
 			}
 		}
 	}
+}
+
+bool dbCompare(Employee* x, Employee* y) {
+	int x_year = std::stoi(x->getEmployeeNum().substr(0, 2));
+	int y_year = std::stoi(y->getEmployeeNum().substr(0, 2));
+
+	if (x_year <= 22) x_year += 2000;
+	else x_year += 1900;
+
+	if (y_year <= 22) y_year += 2000;
+	else y_year += 1900;
+
+	return x_year < y_year;
 }
 
 vector<Employee*> DataBase::sch(char option, string col, string val) {
@@ -67,8 +83,9 @@ vector<Employee*> DataBase::sch(char option, string col, string val) {
 		}
 	}
 
+	sort(list.begin(), list.end(), dbCompare);
+	
 	return list;
-
 }
 
 void DataBase::mod(vector<Employee*> targets, string column, string val) {
