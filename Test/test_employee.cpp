@@ -39,3 +39,12 @@ TEST(EmployeeTest, SetTest) {
 	EXPECT_EQ("PRO", employee.getCerti());
 }
 
+TEST(EmployeeTest, EmployeeNumTest) {
+	Employee employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
+	EXPECT_EQ("15123099", employee.getEmployeeNum());
+
+	Employee employee2("69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
+	EXPECT_EQ("69123099", employee2.getEmployeeNum());
+}
+
+
