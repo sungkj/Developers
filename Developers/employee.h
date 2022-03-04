@@ -9,11 +9,11 @@ class EmployeeNum {
 public:
 	EmployeeNum(string employeeNum) {
 		int employeeNumYear = stoi(employeeNum.substr(0, 2));
-		if (employeeNumYear < 69) {
-			employeeNum_ = stoi(employeeNum) + 2000000000U;
+		if (employeeNumYear < minimumYear_) {
+			employeeNum_ = stoi(employeeNum) + offset2000_;
 		}
 		else {
-			employeeNum_ = stoi(employeeNum) + 1900000000U;
+			employeeNum_ = stoi(employeeNum) + offset1900_;
 		}
 	}
 	string get() {
@@ -27,6 +27,9 @@ public:
 	}
 
 private:
+	const int minimumYear_ = 69;
+	const unsigned int offset1900_ = 1900000000U;
+	const unsigned int offset2000_ = 2000000000U;
 	unsigned int employeeNum_;
 };
 
