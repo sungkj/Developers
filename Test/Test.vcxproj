@@ -55,6 +55,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="test_mod.cpp" />
+    <ClCompile Include="test_employee_manager.cpp" />
+    <ClCompile Include="test_file_inout.cpp" />
     <ClCompile Include="test_sch.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
