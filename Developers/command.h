@@ -35,7 +35,7 @@ protected:
 
 	string _employeeListToString(string commandStr, vector<Employee*> employeeList){
 		if (employeeList.size() == 0)
-			return "NONE";
+			return _getCmdCode(commandStr) + ",NONE";
 
 		string str = "";
 		if (_isPrintOption(commandStr)){
@@ -58,6 +58,8 @@ protected:
 	bool _isPrintOption(string commandStr) { return commandStr.substr(4, 2) == "-p"; }
 	string _getCol(string commandStr) { return str_split(commandStr, ',')[4]; }
 	string _getVal(string commandStr) { return str_split(commandStr, ',')[5]; }
+	string _getModCol(string commandStr) { return str_split(commandStr, ',')[6];}
+	string _getModVal(string commandStr) { return str_split(commandStr, ',')[7]; }
 	char _getOption(string commandStr) { 
 		string str =  str_split(commandStr, ',')[2];
 		char result;
@@ -142,11 +144,9 @@ public:
 	}
 
 	virtual string run(){
-		string col = _getCol(commandStr_);
-		string val = _getVal(commandStr_);
-		vector<Employee*> employeeList = db_->sch(_getOption(commandStr_), col, val);
+		vector<Employee*> employeeList = db_->sch(_getOption(commandStr_), _getCol(commandStr_), _getVal(commandStr_));
 		string result = _employeeListToString(commandStr_, employeeList);
-		db_->mod(employeeList, col, val);
+		db_->mod(employeeList, _getModCol(commandStr_), _getModVal(commandStr_));
 		return result;
 		/*to do : employList 메모리 해제??*/
 	}
