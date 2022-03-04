@@ -1,10 +1,10 @@
 #include "output.h"
 
-Output::Output(string path) {
+FileOutput::FileOutput(string path) {
 	ofs_.open(path);
 }
 
-bool Output::save(vector<string> strs) {
+bool FileOutput::save(vector<string> strs) {
 	if (ofs_.fail()) {
 		return false;
 	}

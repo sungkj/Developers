@@ -8,10 +8,24 @@ using namespace std;
 
 class Input {
 public:
-	Input(string path);
-	vector<string> load();
+	virtual vector<string> load() = 0;
+
+protected:
+	vector<string> commands_;
+};
+
+class FileInput : public Input {
+public:
+	FileInput(string path);
+	virtual vector<string> load() override;
 
 private:
 	ifstream ifs_;
-	vector<string> commands_;
+};
+
+class FactoryInput {
+public:
+	static shared_ptr<Input> createFileInput(string path) {
+		return make_shared<FileInput>(path);
+	}
 };

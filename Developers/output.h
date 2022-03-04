@@ -8,9 +8,21 @@ using namespace std;
 
 class Output {
 public:
-	Output(string path);
-	bool save(vector<string> strs);
+	virtual bool save(vector<string> strs) = 0;
+};
+
+class FileOutput : public Output {
+public:
+	FileOutput(string path);
+	virtual bool save(vector<string> strs) override;
 
 private:
 	ofstream ofs_;
+};
+
+class FactoryOutput {
+public:
+	static shared_ptr<Output> createFileOutput(string path) {
+		return make_shared<FileOutput>(path);
+	}
 };
