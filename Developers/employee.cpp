@@ -10,7 +10,6 @@ Employee::Employee(string employeeNum, string name, string cl, string phoneNum, 
 	else {
 		employeeNum_ = stoi(employeeNum) + 1900000000U;
 	}
-	cout << employeeNum_ << endl;
 
 	size_t pos = name.find(' ');
 	firstName_ = name.substr(0, pos);

@@ -26,6 +26,9 @@ public:
     void setPhoneNum(string phoneNum);
     void setBirthday(string birthday);
     void setCerti(string certi);
+    bool operator<(const Employee& employee) {
+        return this->employeeNum_ < employee.employeeNum_;
+    }
 
 private:
     unsigned int employeeNum_;
