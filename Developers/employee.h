@@ -8,7 +8,7 @@ using namespace std;
 class EmployeeNum {
 public:
 	EmployeeNum(string employeeNum) {
-		int employeeNumYear = stoi(employeeNum.substr(0, 2));
+		int employeeNumYear = stoul(employeeNum.substr(0, 2));
 		if (employeeNumYear < minimumYear_) {
 			employeeNum_ = stoi(employeeNum) + offset2000_;
 		}
