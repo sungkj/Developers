@@ -87,6 +87,9 @@ void DataBase::mod(vector<Employee*> targets, string column, string val) {
 				else if (column.compare("certi") == 0) {
 					employee->setCerti(val);
 				}
+				else if (column.compare("phoneNum") == 0) {
+					employee->setPhoneNum(val);
+				}
 				else {
 					cout << "ERROR : invalid column" << endl;
 				}
