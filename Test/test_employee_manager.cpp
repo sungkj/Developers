@@ -9,12 +9,12 @@
 
 TEST(EmployeeManagerTest, BasicTest) {
     EmployeeManager manager;
-    Input input("input_20_20.txt");
-    Output output("output_test.txt");
+    shared_ptr<Input> input = FactoryInput::createFileInput("input_20_20.txt");
+    shared_ptr<Output> output = FactoryOutput::createFileOutput("output_test.txt");
 
-    manager.readInput(&input);
+    manager.readInput(input);
     manager.execute();
-    manager.writeOutput(&output);
+    manager.writeOutput(output);
 
     string expectedResults[] = {"SCH,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV",
         "MOD,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO",
