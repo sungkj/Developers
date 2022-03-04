@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "../Developers/employee.cpp"
+#include "test_header.h"
 
 TEST(EmployeeTest, GetTest) {
 	Employee employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
