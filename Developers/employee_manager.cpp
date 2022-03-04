@@ -1,7 +1,7 @@
 #include "employee_manager.h"
 
-void EmployeeManager::readInput(Input* input) {
-	commandStrs_ = input->load();
+void EmployeeManager::readInput(shared_ptr<Input> inputPtr) {
+	commandStrs_ = inputPtr->load();
 
 	if (commandStrs_.empty()) {
 		cout << "ERROR : Failed to load input file" << endl;

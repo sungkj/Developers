@@ -12,10 +12,10 @@ int main(int argc, char* argv[]) {
 	}
 
 	EmployeeManager manager;
-	Input input(argv[1]);
+	shared_ptr<Input> inputPtr = FactoryInput::createFileInput(argv[1]);
 	Output output(argv[2]);
 
-	manager.readInput(&input);
+	manager.readInput(inputPtr);
 	manager.execute();
 	manager.writeOutput(&output);
 
