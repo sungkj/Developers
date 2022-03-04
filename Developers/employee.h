@@ -29,6 +29,9 @@ public:
     bool operator<(const Employee& employee) {
         return this->employeeNum_ < employee.employeeNum_;
     }
+    bool operator==(const Employee& employee) {
+        return this->employeeNum_ == employee.employeeNum_;
+    }
 
 private:
     unsigned int employeeNum_;
