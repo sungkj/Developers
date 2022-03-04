@@ -10,6 +10,7 @@ class DataBase {
 public:
     void add(Employee* employee);
     void del(vector<Employee*> target);
+    string getEmployeeInfo(Employee* employee, char option, string col);
     vector<Employee*> sch(char option, string col, string val);
     void mod(vector<Employee*> target, string row, string val);
     vector<Employee*> getDBList();
