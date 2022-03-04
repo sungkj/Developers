@@ -1,5 +1,8 @@
 #include "database.h"
 #include <string>
+#include <algorithm>
+
+using namespace std;
 
 void DataBase::add(Employee* employee) {
 	employees_.push_back(employee);
@@ -14,6 +17,10 @@ void DataBase::del(vector<Employee*> targets) {
 			}
 		}
 	}
+}
+
+bool comparePtrToNode(Employee* a, Employee* b) {
+	return (*a < *b); 
 }
 
 vector<Employee*> DataBase::sch(char option, string col, string val) {
@@ -67,8 +74,9 @@ vector<Employee*> DataBase::sch(char option, string col, string val) {
 		}
 	}
 
+	sort(list.begin(), list.end(), comparePtrToNode);
+	
 	return list;
-
 }
 
 void DataBase::mod(vector<Employee*> targets, string column, string val) {
