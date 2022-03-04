@@ -4,78 +4,18 @@
 #include <vector>
 #include <string>
 #include "database.h"
+#include "cmd_parser.h"
 
 using namespace std;
 
-class CommandExecutor
+class CmdExecutor
 {
 public:
 	virtual string run() = 0;
-protected:
-	vector<string> str_split(string str, char delimiter){
-		vector<string> splitedStr;
-		string word;
-
-		for (int i = 0; str[i] != 0; i++){
-			if (str[i] == delimiter){
-				splitedStr.push_back(word);
-				word.clear();
-				continue;
-			}
-			word.push_back(str[i]);
-		}
-		splitedStr.push_back(word);
-		return splitedStr;
-	}
-
-	Employee* _getEmployee(string commandStr){
-		vector<string> splitedStr = str_split(commandStr, ',');
-		return new Employee(splitedStr[4], splitedStr[5], splitedStr[6], splitedStr[7], splitedStr[8], splitedStr[9]);
-	}
-
-	string _employeeListToString(string commandStr, vector<Employee*> employeeList){
-		if (employeeList.size() == 0)
-			return _getCmdCode(commandStr) + ",NONE";
-
-		string str = "";
-		if (_isPrintOption(commandStr)){
-			int recordSize = employeeList.size();
-			if (recordSize > 5) recordSize = 5;
-			for (int i = 0; i < recordSize; i++){
-				if (i != 0)
-					str += "\n";
-				Employee* emp = employeeList[i];
-				str += _getCmdCode(commandStr) + "," + emp->getEmployeeNum() + "," + emp->getName() + "," + emp->getCl() + "," + emp->getPhoneNum() + "," + emp->getBirthday() + "," + emp->getCerti();
-			}
-		}
-		else{
-			str += _getCmdCode(commandStr) + "," + to_string(employeeList.size());
-		}
-		
-		return str;
-	}
-
-	bool _isPrintOption(string commandStr) { return commandStr.substr(4, 2) == "-p"; }
-	string _getCol(string commandStr) { return str_split(commandStr, ',')[4]; }
-	string _getVal(string commandStr) { return str_split(commandStr, ',')[5]; }
-	string _getModCol(string commandStr) { return str_split(commandStr, ',')[6];}
-	string _getModVal(string commandStr) { return str_split(commandStr, ',')[7]; }
-	char _getOption(string commandStr) { 
-		string str =  str_split(commandStr, ',')[2];
-		char result;
-		if (str.size() == 2)
-			result = str[1];
-		else
-			result = str[0];
-		return result;
-	}
-	string _getCmdCode(string commandStr) { return commandStr.substr(0, 3); }
 
 };
 
-
-
-class AddExecutor : public CommandExecutor
+class AddExecutor : public CmdExecutor
 {
 public:
 	AddExecutor(DataBase* db, string commandStr)
@@ -83,7 +23,8 @@ public:
 	}
 
 	virtual string run(){
-		Employee* employee = _getEmployee(commandStr_);
+		AddCmdParser addCmdParser(commandStr_);
+		Employee* employee = new Employee(addCmdParser.getEmployeeNum(), addCmdParser.getName(), addCmdParser.getCl(), addCmdParser.getPhoneNum(), addCmdParser.getBirthday(), addCmdParser.getCerti());
 		db_->add(employee);
 		// delete employee;
 		return "";
@@ -95,7 +36,7 @@ private:
 };
 
 
-class DelExecutor : public CommandExecutor
+class DelExecutor : public CmdExecutor
 {
 public:
 	DelExecutor(DataBase* db, string commandStr)
@@ -104,11 +45,12 @@ public:
 	}
 
 	virtual string run(){
-		vector<Employee*> employeeList = db_->sch(_getOption(commandStr_), _getCol(commandStr_), _getVal(commandStr_));
-		string result = _employeeListToString(commandStr_, employeeList);
-		db_->del(employeeList);
+		SchCmdParser schCmdParser(commandStr_);
+		vector<Employee*> employeeList = db_->sch(schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
+		string result = schCmdParser.employeeListToString(commandStr_, employeeList);
+		if(!employeeList.empty())
+			db_->del(employeeList);
 		return result;
-		/*to do : employList 메모리 해제??*/
 	}
 
 private:
@@ -117,7 +59,7 @@ private:
 };
 
 
-class SchExecutor : public CommandExecutor
+class SchExecutor : public CmdExecutor
 {
 public:
 	SchExecutor(DataBase* db, string commandStr_)
@@ -125,9 +67,9 @@ public:
 	}
 
 	virtual string run(){
-		vector<Employee*> employeeList = db_->sch(_getOption(commandStr_), _getCol(commandStr_), _getVal(commandStr_));
-		return _employeeListToString(commandStr_, employeeList);
-		/*to do : employList 메모리 해제??*/
+		SchCmdParser schCmdParser(commandStr_);
+		vector<Employee*> employeeList = db_->sch(schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
+		return schCmdParser.employeeListToString(commandStr_, employeeList);
 	}
 
 private:
@@ -136,7 +78,7 @@ private:
 	string commandStr_;
 };
 
-class ModExecutor : public CommandExecutor
+class ModExecutor : public CmdExecutor
 {
 public:
 	ModExecutor(DataBase* db, string strCommand)
@@ -144,11 +86,16 @@ public:
 	}
 
 	virtual string run(){
-		vector<Employee*> employeeList = db_->sch(_getOption(commandStr_), _getCol(commandStr_), _getVal(commandStr_));
-		string result = _employeeListToString(commandStr_, employeeList);
-		db_->mod(employeeList, _getModCol(commandStr_), _getModVal(commandStr_));
+		SchCmdParser schCmdParser(commandStr_);
+		vector<Employee*> employeeList = db_->sch(schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
+		string result = schCmdParser.employeeListToString(commandStr_, employeeList);
+
+
+		if (!employeeList.empty()){
+			ModCmdParser modCmdParser(commandStr_);
+			db_->mod(employeeList, modCmdParser.getModCol(), modCmdParser.getModVal());
+		}
 		return result;
-		/*to do : employList 메모리 해제??*/
 	}
 
 private:
@@ -157,13 +104,13 @@ private:
 };
 
 
-class Command {
+class CmdManager {
 public:
-    Command(DataBase* db);
-    string execute(const string command);
+    CmdManager(DataBase* db);
+    string execute(const string commandStr);
 
 private:
-    CommandExecutor* _getExecutor(const string commandStr);
+    CmdExecutor* _getExecutor(const string commandStr);
     DataBase* db_;
    
 };
