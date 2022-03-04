@@ -10,7 +10,7 @@ TEST(EmployeeManagerTest, BasicTest) {
     Output output("output_test.txt");
 
     manager.readInput(&input);
-    manager.excute();
+    manager.execute();
     manager.writeOutput(&output);
 
     string expectedResults[] = {"SCH,02117175,SBILHUT LDEXRI,CL4,010-2814-1699,19950704,ADV",
