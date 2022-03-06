@@ -24,8 +24,8 @@ public:
 
 	virtual string run(){
 		AddCmdParser addCmdParser(commandStr_);
-		Employee* employee = new Employee(addCmdParser.getEmployeeNum(), addCmdParser.getName(), addCmdParser.getCl(), addCmdParser.getPhoneNum(), addCmdParser.getBirthday(), addCmdParser.getCerti());
-		db_->add(employee);
+		Employee employee(addCmdParser.getEmployeeNum(), addCmdParser.getName(), addCmdParser.getCl(), addCmdParser.getPhoneNum(), addCmdParser.getBirthday(), addCmdParser.getCerti());
+		db_->add(&employee);
 		// delete employee;
 		return "";
 	}
