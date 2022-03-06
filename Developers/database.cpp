@@ -16,10 +16,13 @@ void DataBase::add(Employee* employee) {
 }
 
 void DataBase::del(vector<Employee*> targets) {
+	Employee* empl;
 	for (auto target : targets) {
 		for (int i = 0; i < employees_.size(); i++) {
-			if (target->getEmployeeNum().compare(employees_[i]->getEmployeeNum()) == 0) {
+			empl = employees_[i];
+			if (*target == *empl) {
 				employees_.erase(employees_.begin() + i);
+				delete empl;
 				break;
 			}
 		}
@@ -99,7 +102,7 @@ vector<Employee*> DataBase::sch(char option, string col, string val) {
 void DataBase::mod(vector<Employee*> targets, string column, string val) {
 	for (auto target : targets) {
 		for (auto employee : employees_) {
-			if (target->getEmployeeNum().compare(employee->getEmployeeNum()) == 0) {
+			if (*target == *employee) {
 				if (column.compare("name") == 0) {
 					employee->setName(val);
 				}
