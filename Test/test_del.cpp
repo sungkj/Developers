@@ -4,26 +4,19 @@
 TEST(FunctionTest1, TestDel) {
 	DataBase* db = new DataBase();
 
-	vector<Employee*> testList;
+	vector<Employee*> delList;
 	vector<Employee*> result;
 
-	testList.push_back(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
-	testList.push_back(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
-	testList.push_back(new Employee("14130827", "RPO JK", "CL4", "010 - 3231 - 1698", "20090201", "ADV"));
+	db->add(new Employee("14130827", "RPO JK", "CL4", "010-3231-1698", "20090201", "ADV"));
+	db->add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
+	db->add(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
 
-	db->add(testList[0]);
-	db->add(testList[1]);
-	db->add(testList[2]);
+	delList.push_back(new Employee("14130827", "RPO JK", "CL4", "010-3231-1698", "20090201", "ADV"));
+	delList.push_back(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
 
-	result.push_back(testList[1]);
-	result.push_back(testList[2]);
-	testList.pop_back();
-	testList.pop_back();
+	db->del(delList);
 
-	db->del(testList);
+	result = db->sch(' ', "certi", "PRO");
 
-	vector<Employee*> dbList = db->getDBList();
-
-	EXPECT_EQ(result, dbList);
-
+	EXPECT_EQ("17112609", result[0]->getEmployeeNum());
 }

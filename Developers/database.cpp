@@ -126,7 +126,3 @@ void DataBase::mod(vector<Employee*> targets, string column, string val) {
 		}
 	}
 }
-
-vector<Employee*> DataBase::getDBList() {
-	return employees_;
-}
