@@ -5,7 +5,14 @@
 using namespace std;
 
 void DataBase::add(Employee* employee) {
-	employees_.push_back(employee);
+	Employee* empl = new Employee(employee->getEmployeeNum(), employee->getName(), 
+		employee->getCl(), employee->getPhoneNum(), employee->getBirthday(), employee->getCerti());
+	if (empl == nullptr) {
+		cout << "Error : Failed to alloc!" << endl;
+		return;
+	}
+
+	employees_.push_back(empl);
 }
 
 void DataBase::del(vector<Employee*> targets) {
