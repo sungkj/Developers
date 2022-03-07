@@ -16,7 +16,7 @@ protected:
 
 class FileInput : public Input {
 public:
-	FileInput(string path);
+	FileInput(const string path);
 	virtual vector<string> load() override;
 
 private:
@@ -25,7 +25,7 @@ private:
 
 class FactoryInput {
 public:
-	static shared_ptr<Input> createFileInput(string path) {
+	static shared_ptr<Input> createFileInput(const string path) {
 		return make_shared<FileInput>(path);
 	}
 };
