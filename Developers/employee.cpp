@@ -1,77 +1,77 @@
 #include "employee.h"
 
-Employee::Employee(string employeeNum, string name, string cl, string phoneNum, string birthday, string certi) :
+Employee::Employee(const string employeeNum, const string name, const string cl, const string phoneNum, const string birthday, const string certi) :
     employeeNum_(employeeNum), name_(name), cl_(cl), phoneNum_(phoneNum), birthday_(birthday), certi_(certi) {
 }
 
-string Employee::getEmployeeNum() {
+string Employee::getEmployeeNum() const {
 	return employeeNum_.get();
 }
 
-string Employee::getName() {
+string Employee::getName() const {
 	return name_.getName();
 }
 
-string Employee::getCl() {
+string Employee::getCl() const {
 	return cl_;
 }
 
-string Employee::getPhoneNum() {
+string Employee::getPhoneNum() const {
 	return phoneNum_.getPhoneNum();
 }
 
-string Employee::getBirthday() {
+string Employee::getBirthday() const {
 	return birthday_.get();
 }
 
-string Employee::getCerti() {
+string Employee::getCerti() const {
 	return certi_;
 }
 
-string Employee::getFirstName() {
+string Employee::getFirstName() const {
 	return name_.getFirstName();
 }
 
-string Employee::getLastName() {	
+string Employee::getLastName() const {
 	return name_.getLastName();
 }
 
-string Employee::getMiddlePhoneNum() {
+string Employee::getMiddlePhoneNum() const {
 	return phoneNum_.getMiddlePhoneNum();
 }
 
-string Employee::getLastPhoneNum() {
+string Employee::getLastPhoneNum() const {
 	return phoneNum_.getLastPhoneNum();
 }
 
-string Employee::getBirthdayYear() {
+string Employee::getBirthdayYear() const {
 	return birthday_.getYear();
 }
 
-string Employee::getBirthdayMonth() {
+string Employee::getBirthdayMonth() const {
 	return birthday_.getMonth();
 }
 
-string Employee::getBirthdayDate() {
+string Employee::getBirthdayDate() const {
 	return birthday_.getDate();
 }
 
-void Employee::setName(string name) {
+void Employee::setName(const string name) {
 	name_.setName(name);
 }
 
-void Employee::setCl(string cl) {
+void Employee::setCl(const string cl) {
 	cl_ = cl;
 }
 
-void Employee::setPhoneNum(string phoneNum) {
+void Employee::setPhoneNum(const string phoneNum) {
 	phoneNum_.setPhoneNum(phoneNum);
 }
 
-void Employee::setBirthday(string birthday) {
+void Employee::setBirthday(const string birthday) {
 	birthday_.set(birthday);
 }
 
-void Employee::setCerti(string certi) {
+void Employee::setCerti(const string certi) {
 	certi_ = certi;
 }

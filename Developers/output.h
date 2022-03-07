@@ -13,8 +13,8 @@ public:
 
 class FileOutput : public Output {
 public:
-	FileOutput(string path);
-	virtual bool save(vector<string> strs) override;
+	FileOutput(const string path);
+	virtual bool save(const vector<string> strs) override;
 
 private:
 	ofstream ofs_;
@@ -22,7 +22,7 @@ private:
 
 class FactoryOutput {
 public:
-	static shared_ptr<Output> createFileOutput(string path) {
+	static shared_ptr<Output> createFileOutput(const string path) {
 		return make_shared<FileOutput>(path);
 	}
 };

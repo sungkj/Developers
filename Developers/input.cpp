@@ -1,6 +1,6 @@
 #include "input.h"
 
-FileInput::FileInput(string path) {
+FileInput::FileInput(const string path) {
 	ifs_.open(path);
 }
 
