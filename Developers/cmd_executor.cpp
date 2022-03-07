@@ -15,7 +15,6 @@ string AddExecutor::run() {
 	return "";
 }
 
-
 string DelExecutor::run() {
 	SchCmdParser schCmdParser(commandStr_);
 	vector<Employee*> employeeList = db_->sch(schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
@@ -35,7 +34,6 @@ string ModExecutor::run() {
 	SchCmdParser schCmdParser(commandStr_);
 	vector<Employee*> employeeList = db_->sch(schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
 	string result = schCmdParser.employeeListToString(commandStr_, employeeList);
-
 
 	if (!employeeList.empty()) {
 		ModCmdParser modCmdParser(commandStr_);

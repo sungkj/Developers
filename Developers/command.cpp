@@ -6,6 +6,9 @@ CmdManager::CmdManager(DataBase* db) {
 
 string CmdManager::execute(const string commandStr) {
 	CmdExecutor* cmdExecutor = _getExecutor(commandStr);
+	if (cmdExecutor == nullptr) {
+		throw invalid_argument("커맨드가 잘못되었습니다.");
+	}
 	string result = cmdExecutor->run();
 	delete cmdExecutor;
 	return result;
