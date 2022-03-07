@@ -1,8 +1,8 @@
 #include "employee.h"
 #include "cmd_parser.h"
 
-#ifndef MAX
-#define MAX(a,b) (((a) > (b)) ? (a) : (b))
+#ifndef MIN
+#define MIN(a,b) (((a) < (b)) ? (a) : (b))
 #endif
 vector<string> CmdParser::str_split(const string str, const char delimiter) {
 	vector<string> splitedStrs;
@@ -39,12 +39,11 @@ string SchCmdParser::employeeListToString(const string commandStr, const vector<
 
 	string str = "";
 	if (isPrintOption()) {
-		int recordSize = MAX(employeeList.size(), MAX_RECORD_SIZE);
+		int recordSize = MIN(employeeList.size(), MAX_RECORD_SIZE);
 		for (int i = 0; i < recordSize; i++) {
 			if (i != 0)
 				str += "\n";
-			Employee* emp = employeeList[i];
-			str += getCmdCode() + "," + emp->getEmployeeNum() + "," + emp->getName() + "," + emp->getCl() + "," + emp->getPhoneNum() + "," + emp->getBirthday() + "," + emp->getCerti();
+			str += getCmdCode() + "," + employeeList[i]->toString();
 		}
 	}
 	else {

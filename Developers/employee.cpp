@@ -56,6 +56,10 @@ string Employee::getBirthdayDate() const {
 	return birthday_.getDate();
 }
 
+string Employee::toString() const {
+	return getEmployeeNum() + "," + getName() + "," + getCl() + "," + getPhoneNum() + "," + getBirthday() + "," + getCerti();
+}
+
 void Employee::setName(const string name) {
 	name_.setName(name);
 }
