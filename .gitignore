@@ -3,5 +3,7 @@ Debug/
 packages/
 Developers/Debug/
 Developers/Developers.vcxproj.user
+Developers/output.txt
 Test/Debug/
 Test/Test.vcxproj.user
+Test/output_test.txt

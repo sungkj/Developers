@@ -10,9 +10,7 @@ using namespace std;
 
 class EmployeeManager {
 public:
-    void readInput(shared_ptr<Input> inputPtr);
-    void execute();
-    void writeOutput(shared_ptr<Output> outputPtr);
+    void execute(shared_ptr<Input> inputPtr, shared_ptr<Output> outputPtr);
 
 private:
     vector<string> commandStrs_;

@@ -8,16 +8,13 @@ using namespace std;
 
 class Input {
 public:
-	virtual vector<string> load() = 0;
-
-protected:
-	vector<string> commands_;
+	virtual string read() = 0;
 };
 
 class FileInput : public Input {
 public:
 	FileInput(const string path);
-	virtual vector<string> load() override;
+	virtual string read() override;
 
 private:
 	ifstream ifs_;
