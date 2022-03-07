@@ -4,14 +4,12 @@ FileOutput::FileOutput(const string path) {
 	ofs_.open(path);
 }
 
-bool FileOutput::save(const vector<string> strs) {
+bool FileOutput::write(const string str) {
 	if (ofs_.fail()) {
 		return false;
 	}
 
-	for (auto str : strs) {
-		ofs_ << str << endl;
-	}
+	ofs_ << str << endl;
 
 	return true;
 }

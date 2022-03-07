@@ -15,8 +15,7 @@ int main(int argc, char* argv[]) {
 	shared_ptr<Input> inputPtr = FactoryInput::createFileInput(argv[1]);
 	shared_ptr<Output> outputPtr = FactoryOutput::createFileOutput(argv[2]);
 
-	manager.execute(inputPtr);
-	manager.writeOutput(outputPtr);
+	manager.execute(inputPtr, outputPtr);
 
 	return 0;
 }

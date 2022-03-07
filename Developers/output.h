@@ -8,13 +8,13 @@ using namespace std;
 
 class Output {
 public:
-	virtual bool save(vector<string> strs) = 0;
+	virtual bool write(const string str) = 0;
 };
 
 class FileOutput : public Output {
 public:
 	FileOutput(const string path);
-	virtual bool save(const vector<string> strs) override;
+	virtual bool write(const string str) override;
 
 private:
 	ofstream ofs_;

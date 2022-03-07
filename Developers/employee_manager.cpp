@@ -1,6 +1,6 @@
 #include "employee_manager.h"
 
-void EmployeeManager::execute(shared_ptr<Input> inputPtr) {
+void EmployeeManager::execute(shared_ptr<Input> inputPtr, shared_ptr<Output> outputPtr) {
 	DataBase db;
 
 	while (true) {
@@ -12,13 +12,10 @@ void EmployeeManager::execute(shared_ptr<Input> inputPtr) {
 		CmdManager* cmdManager = new CmdManager(&db);
 		string outputStr = cmdManager->execute(commandStr);
 		if (!outputStr.empty()) {
-			outputStrs_.push_back(outputStr);
+			if (!outputPtr->write(outputStr)) {
+				cout << "ERROR : Write error" << endl;
+				return;
+			}
 		}
-	}
-}
-
-void EmployeeManager::writeOutput(shared_ptr<Output> outputPtr) {
-	if (!outputPtr->save(outputStrs_)) {
-		cout << "ERROR : Failed to write output file" << endl;
 	}
 }
