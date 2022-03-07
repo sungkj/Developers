@@ -139,6 +139,7 @@ public:
 	string getBirthdayYear() const;
 	string getBirthdayMonth() const;
 	string getBirthdayDate() const;
+	string toString() const;
 	void setName(const string name);
 	void setCl(const string cl);
 	void setPhoneNum(const string phoneNum);
