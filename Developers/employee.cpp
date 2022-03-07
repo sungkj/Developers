@@ -1,7 +1,7 @@
 #include "employee.h"
 
-Employee::Employee(const string employeeNum, const string name, const string cl, const string phoneNum, const string birthday, const string certi) :
-    employeeNum_(employeeNum), name_(name), cl_(cl), phoneNum_(phoneNum), birthday_(birthday), certi_(certi) {
+Employee::Employee(const EmployeeInfo employeeInfo) :
+	employeeNum_(employeeInfo.employeeNum), name_(employeeInfo.name), cl_(employeeInfo.cl), phoneNum_(employeeInfo.phoneNum), birthday_(employeeInfo.birthday), certi_(employeeInfo.certi) {
 }
 
 string Employee::getEmployeeNum() const {

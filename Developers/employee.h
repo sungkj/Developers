@@ -5,6 +5,15 @@
 
 using namespace std;
 
+struct EmployeeInfo {
+	string employeeNum;
+	string name;
+	string cl;
+	string phoneNum;
+	string birthday;
+	string certi;
+};
+
 class EmployeeNum {
 public:
 	EmployeeNum(const string employeeNum) {
@@ -116,7 +125,7 @@ private:
 
 class Employee {
 public:
-	Employee(const string employeeNum, const string name, const string cl, const string phoneNum, const string birthday, const string certi);
+	Employee(const EmployeeInfo employeeInfo);
 	string getEmployeeNum() const;
 	string getName() const;
 	string getCl() const;
