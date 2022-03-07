@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cmd_executor.cpp" />
     <ClCompile Include="cmd_parser.cpp" />
     <ClCompile Include="command.cpp" />
     <ClCompile Include="database.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="output.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="cmd_executor.h" />
     <ClInclude Include="cmd_parser.h" />
     <ClInclude Include="command.h" />
     <ClInclude Include="database.h" />

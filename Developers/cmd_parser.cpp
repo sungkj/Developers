@@ -1,7 +1,7 @@
 #include "employee.h"
 #include "cmd_parser.h"
 
-vector<string> CmdParser::str_split(string str, char delimiter) {
+vector<string> CmdParser::str_split(const string str, const char delimiter) {
 	vector<string> splitedStr;
 	string word;
 
@@ -18,7 +18,7 @@ vector<string> CmdParser::str_split(string str, char delimiter) {
 }
 
 char SchCmdParser::getOption() {
-	string str = splitedCmdStr_[2];
+	string str = splitedCmdStr_[IDX_OPTION];
 	char result;
 	if (str.size() == 2)
 		result = str[1];
@@ -27,7 +27,7 @@ char SchCmdParser::getOption() {
 	return result;
 }
 
-string SchCmdParser::employeeListToString(string commandStr, vector<Employee*> employeeList) {
+string SchCmdParser::employeeListToString(const string commandStr, const vector<Employee*> employeeList) {
 	if (employeeList.size() == 0)
 		return getCmdCode() + ",NONE";
 
