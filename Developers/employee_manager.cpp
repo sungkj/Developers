@@ -1,17 +1,14 @@
 #include "employee_manager.h"
 
-void EmployeeManager::readInput(shared_ptr<Input> inputPtr) {
-	commandStrs_ = inputPtr->load();
-
-	if (commandStrs_.empty()) {
-		cout << "ERROR : Failed to load input file" << endl;
-	}
-}
-
-void EmployeeManager::execute() {
+void EmployeeManager::execute(shared_ptr<Input> inputPtr) {
 	DataBase db;
-		
-	for (auto commandStr : commandStrs_) {
+
+	while (true) {
+		string commandStr = inputPtr->read();
+		if (commandStr.empty()) {
+			break;
+		}
+
 		CmdManager* cmdManager = new CmdManager(&db);
 		string outputStr = cmdManager->execute(commandStr);
 		if (!outputStr.empty()) {

@@ -3,7 +3,15 @@
 
 TEST(InputTest, BasicTest) {
 	shared_ptr<Input> input = FactoryInput::createFileInput("input_20_20.txt");
-	vector<string> commands = input->load();
+	vector<string> commands;
+	string str;
+	while (true) {
+		str = input->read();
+		if (str.empty()) {
+			break;
+		}
+		commands.push_back(str);
+	}
 	ASSERT_EQ(40, commands.size());
 	EXPECT_EQ("ADD, , , ,15123099,VXIHXOTH JHOP,CL3,010-3112-2609,19771211,ADV", commands[0]);
 	EXPECT_EQ("ADD, , , ,17112609,FB NTAWR,CL4,010-5645-6122,19861203,PRO", commands[1]);

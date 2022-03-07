@@ -4,16 +4,11 @@ FileInput::FileInput(const string path) {
 	ifs_.open(path);
 }
 
-vector<string> FileInput::load() {
-	commands_.clear();
-
+string FileInput::read() {
+	string str;
 	if (!ifs_.fail()) {
-		string str;
-
-		while (getline(ifs_, str)) {
-			commands_.push_back(str);
-		}
+		getline(ifs_, str);
 	}
-
-	return commands_;
+	
+	return str;
 }
