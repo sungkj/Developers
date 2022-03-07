@@ -52,25 +52,7 @@ void DataBase::mod(vector<Employee*> targets, string column, string val) {
 	for (auto target : targets) {
 		for (auto employee : employees_) {
 			if (*target == *employee) {
-				if (column.compare("name") == 0) {
-					employee->setName(val);
-				}
-				else if (column.compare("birthday") == 0) {
-					employee->setBirthday(val);
-				}
-				else if (column.compare("cl") == 0) {
-					employee->setCl(val);
-				}
-				else if (column.compare("certi") == 0) {
-					employee->setCerti(val);
-				}
-				else if (column.compare("phoneNum") == 0) {
-					employee->setPhoneNum(val);
-				}
-				else {
-					cout << "ERROR : invalid column" << endl;
-				}
-				break;
+				employee->setInfo(column, val);
 			}
 		}
 	}

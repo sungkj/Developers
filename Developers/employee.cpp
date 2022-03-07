@@ -80,7 +80,7 @@ void Employee::setCerti(const string certi) {
 	certi_ = certi;
 }
 
-string Employee::getInfo(char option, string col) {
+string Employee::getInfo(char option, string col) const {
 	if (col == "employeeNum") {
 		return getEmployeeNum();
 	}
@@ -128,4 +128,25 @@ string Employee::getInfo(char option, string col) {
 	}
 
 	return "error_code";
+}
+
+void Employee::setInfo(string col, string val) {
+	if (col == "name") {
+		setName(val);
+	}
+	else if (col == "birthday") {
+		setBirthday(val);
+	}
+	else if (col == "cl") {
+		setCl(val);
+	}
+	else if (col == "certi") {
+		setCerti(val);
+	}
+	else if (col == "phoneNum") {
+		setPhoneNum(val);
+	}
+	else {
+		cout << "ERROR : invalid column" << endl;
+	}
 }
