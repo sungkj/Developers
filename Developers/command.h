@@ -24,7 +24,14 @@ public:
 
 	virtual string run(){
 		AddCmdParser addCmdParser(commandStr_);
-		Employee employee(addCmdParser.getEmployeeNum(), addCmdParser.getName(), addCmdParser.getCl(), addCmdParser.getPhoneNum(), addCmdParser.getBirthday(), addCmdParser.getCerti());
+		struct EmployeeInfo employeeInfo;
+		employeeInfo.employeeNum = addCmdParser.getEmployeeNum();
+		employeeInfo.name = addCmdParser.getName();
+		employeeInfo.cl = addCmdParser.getCl();
+		employeeInfo.phoneNum = addCmdParser.getPhoneNum();
+		employeeInfo.birthday = addCmdParser.getBirthday();
+		employeeInfo.certi = addCmdParser.getCerti();
+		Employee employee(employeeInfo);
 		db_->add(&employee);
 		// delete employee;
 		return "";
