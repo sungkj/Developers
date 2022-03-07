@@ -5,14 +5,7 @@
 using namespace std;
 
 void DataBase::add(Employee* employee) {
-	struct EmployeeInfo employeeInfo;
-	employeeInfo.employeeNum = employee->getEmployeeNum();
-	employeeInfo.name = employee->getName();
-	employeeInfo.cl = employee->getCl();
-	employeeInfo.phoneNum = employee->getPhoneNum();
-	employeeInfo.birthday = employee->getBirthday();
-	employeeInfo.certi = employee->getCerti();
-	Employee* empl = new Employee(employeeInfo);
+	Employee* empl = new Employee(*employee);
 	if (empl == nullptr) {
 		cout << "Error : Failed to alloc!" << endl;
 		return;
