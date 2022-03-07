@@ -90,14 +90,18 @@ string DataBase::getEmployeeInfo(Employee* employee, char option, string col)
 	return "error_code";
 }
 
-vector<Employee*> DataBase::sch(char option, string col, string val) {
+vector<Employee*> DataBase::sch(bool pFlag, char option, string col, string val) {
 	vector<Employee*> list;
 	string employeeInfo;
+	const int MAX_RECORD_SIZE = 5;
 
 	for (auto employees : employees_) {
 		employeeInfo = getEmployeeInfo(employees, option, col);
 		if (employeeInfo == "error_code") break;
 		if (employeeInfo == val) list.push_back(employees);
+		if (pFlag && (list.size() >= MAX_RECORD_SIZE)) {
+			break;
+		}
 	}
 
 	return list;

@@ -18,7 +18,7 @@ string AddExecutor::run() {
 
 string DelExecutor::run() {
 	SchCmdParser schCmdParser(commandStr_);
-	vector<Employee*> employeeList = db_->sch(schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
+	vector<Employee*> employeeList = db_->sch(schCmdParser.isPrintOption(), schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
 	string result = schCmdParser.employeeListToString(commandStr_, employeeList);
 	if (!employeeList.empty())
 		db_->del(employeeList);
@@ -27,13 +27,13 @@ string DelExecutor::run() {
 
 string SchExecutor::run() {
 	SchCmdParser schCmdParser(commandStr_);
-	vector<Employee*> employeeList = db_->sch(schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
+	vector<Employee*> employeeList = db_->sch(schCmdParser.isPrintOption(), schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
 	return schCmdParser.employeeListToString(commandStr_, employeeList);
 }
 
 string ModExecutor::run() {
 	SchCmdParser schCmdParser(commandStr_);
-	vector<Employee*> employeeList = db_->sch(schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
+	vector<Employee*> employeeList = db_->sch(schCmdParser.isPrintOption(), schCmdParser.getOption(), schCmdParser.getSchCol(), schCmdParser.getSchVal());
 	string result = schCmdParser.employeeListToString(commandStr_, employeeList);
 
 

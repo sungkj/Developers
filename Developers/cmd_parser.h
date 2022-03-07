@@ -52,9 +52,9 @@ public:
 	string getCmdCode() { return splitedCmdStr_[IDX_CMD_CODE]; }
 	char getOption();
 	string employeeListToString(const string commandStr, const vector<Employee*> employeeList);
+	bool isPrintOption() { return splitedCmdStr_[IDX_PRINT_OPTION] == "-p"; }
 		
 private:
-	bool isPrintOption() { return splitedCmdStr_[IDX_PRINT_OPTION] == "-p"; }
 	
 	const int IDX_CMD_CODE = 0;
 	const int IDX_PRINT_OPTION = 1;
