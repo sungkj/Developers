@@ -2,7 +2,7 @@
 #include "test_header.h"
 
 TEST(EmployeeTest, GetTest) {
-	Employee employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
+	Employee employee(EmployeeInfo{ "15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
 
 	EXPECT_EQ("15123099", employee.getEmployeeNum());
 	EXPECT_EQ("VXIHXOTH JHOP", employee.getName());
@@ -21,7 +21,7 @@ TEST(EmployeeTest, GetTest) {
 }
 
 TEST(EmployeeTest, SetTest) {
-	Employee employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
+	Employee employee(EmployeeInfo{ "15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
 
 	employee.setName("FB NTAWR");
 	EXPECT_EQ("FB NTAWR", employee.getName());
@@ -40,27 +40,27 @@ TEST(EmployeeTest, SetTest) {
 }
 
 TEST(EmployeeTest, EmployeeNumTest) {
-	Employee employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
+	Employee employee(EmployeeInfo{ "15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
 	EXPECT_EQ("15123099", employee.getEmployeeNum());
 
-	Employee employee2("69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
+	Employee employee2(EmployeeInfo{ "69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
 	EXPECT_EQ("69123099", employee2.getEmployeeNum());
 }
 
 TEST(EmployeeTest, EmployeeCompareOperatorTest) {
-	Employee employee1("69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
-	Employee employee2("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
-	Employee employee3("20123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
+	Employee employee1({ "69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
+	Employee employee2({ "15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
+	Employee employee3({ "20123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
 	EXPECT_TRUE(employee1 < employee2);
 	EXPECT_TRUE(employee2 < employee3);
 	EXPECT_TRUE(employee1 < employee3);
 }
 
 TEST(EmployeeTest, EmployeeEqualOperatorTest) {
-	Employee employee1("69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
-	Employee employee2("69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
-	Employee employee3("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
-	Employee employee4("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV");
+	Employee employee1( {"69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
+	Employee employee2( {"69123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
+	Employee employee3( {"15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
+	Employee employee4( {"15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" });
 	EXPECT_TRUE(employee1 == employee2);
 	EXPECT_TRUE(employee3 == employee4);
 }

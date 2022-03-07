@@ -7,11 +7,11 @@ TEST(FunctionTest1, TestMod) {
 	vector<Employee*> modList;
 	vector<Employee*> result;
 
-	db->add(new Employee("14130827", "RPO JK", "CL4", "010-3231-1698", "20090201", "ADV"));
-	db->add(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
-	db->add(new Employee("17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO"));
+	db->add(new Employee({ "14130827", "RPO JK", "CL4", "010-3231-1698", "20090201", "ADV" }));
+	db->add(new Employee({ "15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" }));
+	db->add(new Employee({ "17112609", "FB NTAWR", "CL4", "010-5645-6122", "19861203", "PRO" }));
 
-	modList.push_back(new Employee("15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV"));
+	modList.push_back(new Employee({ "15123099", "VXIHXOTH JHOP", "CL3", "010-3112-2609", "19771211", "ADV" }));
 
 	db->mod(modList, "name", "JOOHWAN KIM");
 

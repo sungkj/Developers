@@ -5,9 +5,9 @@
 
 TEST(DatabaseTest, SchTest) {
 	DataBase* testList = new DataBase();
-	// DB Ãß°¡ ÇÊ¿ä
+	// DB ï¿½ß°ï¿½ ï¿½Ê¿ï¿½
 	vector<Employee*> cmpList;
-	Employee* employee = new Employee("15123099", "LEE JY", "CL3", "010-1234-5678", "19001122", "PRO");
+	Employee* employee = new Employee({ "15123099", "LEE JY", "CL3", "010-1234-5678", "19001122", "PRO" });
 
 	cmpList.push_back(employee);
 	testList->add(employee);
