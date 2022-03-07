@@ -32,63 +32,13 @@ bool comparePtrToNode(Employee* a, Employee* b) {
 	return (*a < *b); 
 }
 
-string DataBase::getEmployeeInfo(Employee* employee, char option, string col)
-{
-	if (col == "employeeNum") {
-		return employee->getEmployeeNum();
-	}
-	else if (col == "name") {
-		if (option == ' ') {
-			return employee->getName();
-		}
-		else if (option == 'f') {
-			return employee->getFirstName();
-		}
-		else if (option == 'l') {
-			return employee->getLastName();
-		}
-	}
-	else if (col == "cl") {
-		return employee->getCl();
-	}
-	else if (col == "phoneNum") {
-		if (option == ' ') {
-			return employee->getPhoneNum();
-		}
-		else if (option == 'm') {
-			return employee->getMiddlePhoneNum();
-		}
-		else if (option == 'l') {
-			return employee->getLastPhoneNum();
-		}
-	}
-	else if (col == "birthday") {
-		if (option == ' ') {
-			return employee->getBirthday();
-		}
-		else if (option == 'y') {
-			return employee->getBirthdayYear();
-		}
-		else if (option == 'm') {
-			return employee->getBirthdayMonth();
-		}
-		else if (option == 'd') {
-			return employee->getBirthdayDate();
-		}
-	}
-	else if (col == "certi") {
-		return employee->getCerti();
-	}
-
-	return "error_code";
-}
 
 vector<Employee*> DataBase::sch(char option, string col, string val) {
 	vector<Employee*> list;
 	string employeeInfo;
 
 	for (auto employees : employees_) {
-		employeeInfo = getEmployeeInfo(employees, option, col);
+		employeeInfo = employees->getInfo(option, col);
 		if (employeeInfo == "error_code") break;
 		if (employeeInfo == val) list.push_back(employees);
 	}
