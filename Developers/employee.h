@@ -145,6 +145,8 @@ public:
 	void setPhoneNum(const string phoneNum);
 	void setBirthday(const string birthday);
 	void setCerti(const string certi);
+	string getInfo(char option, string col) const;
+	void setInfo(string col, string val);
 	bool operator<(const Employee& employee) const {
 		return this->employeeNum_ < employee.employeeNum_;
 	}

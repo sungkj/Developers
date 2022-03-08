@@ -79,3 +79,74 @@ void Employee::setBirthday(const string birthday) {
 void Employee::setCerti(const string certi) {
 	certi_ = certi;
 }
+
+string Employee::getInfo(char option, string col) const {
+	if (col == "employeeNum") {
+		return getEmployeeNum();
+	}
+	else if (col == "name") {
+		if (option == ' ') {
+			return getName();
+		}
+		else if (option == 'f') {
+			return getFirstName();
+		}
+		else if (option == 'l') {
+			return getLastName();
+		}
+	}
+	else if (col == "cl") {
+		return getCl();
+	}
+	else if (col == "phoneNum") {
+		if (option == ' ') {
+			return getPhoneNum();
+		}
+		else if (option == 'm') {
+			return getMiddlePhoneNum();
+		}
+		else if (option == 'l') {
+			return getLastPhoneNum();
+		}
+	}
+	else if (col == "birthday") {
+		if (option == ' ') {
+			return getBirthday();
+		}
+		else if (option == 'y') {
+			return getBirthdayYear();
+		}
+		else if (option == 'm') {
+			return getBirthdayMonth();
+		}
+		else if (option == 'd') {
+			return getBirthdayDate();
+		}
+	}
+	else if (col == "certi") {
+		return getCerti();
+	}
+
+	return "error_code";
+}
+
+void Employee::setInfo(string col, string val) {
+	if (col == "name") {
+		setName(val);
+	}
+	else if (col == "birthday") {
+		setBirthday(val);
+	}
+	else if (col == "cl") {
+		setCl(val);
+	}
+	else if (col == "certi") {
+		setCerti(val);
+	}
+	else if (col == "phoneNum") {
+		setPhoneNum(val);
+	}
+	else {
+		cout << "ERROR : invalid column" << endl;
+	}
+}
