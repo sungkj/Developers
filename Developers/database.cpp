@@ -5,13 +5,24 @@
 using namespace std;
 
 void DataBase::add(Employee* employee) {
+	int i;
 	Employee* empl = new Employee(*employee);
 	if (empl == nullptr) {
 		cout << "Error : Failed to alloc!" << endl;
 		return;
 	}
 
-	employees_.push_back(empl);
+	for (i = 0; i < employees_.size(); i++) {
+		if (*empl < *employees_[i]) {
+			break;
+		}
+		if (*empl == *employees_[i]) {
+			cout << "ERROR : Exist same employee number" << endl;
+			return;
+		}
+	}
+
+	employees_.insert(employees_.begin() + i, empl);
 }
 
 void DataBase::del(vector<Employee*> targets) {
@@ -28,11 +39,6 @@ void DataBase::del(vector<Employee*> targets) {
 	}
 }
 
-bool comparePtrToNode(Employee* a, Employee* b) {
-	return (*a < *b); 
-}
-
-
 vector<Employee*> DataBase::sch(char option, string col, string val) {
 	vector<Employee*> list;
 	string employeeInfo;
@@ -43,8 +49,6 @@ vector<Employee*> DataBase::sch(char option, string col, string val) {
 		if (employeeInfo == val) list.push_back(employees);
 	}
 
-	if (list.size() > 1) sort(list.begin(), list.end(), comparePtrToNode);
-	
 	return list;
 }
 
